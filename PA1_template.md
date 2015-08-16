@@ -1,27 +1,16 @@
-# Reproducible Research: Peer Assessment 1
 
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
 
 ```r
 library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following object is masked from 'package:stats':
-## 
-##     filter
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 originaldata <- read.csv("activity.csv")
 data <- filter(originaldata, !is.na(steps))
 intervaldata <- group_by(data, interval)
@@ -52,7 +41,7 @@ summary(data)
 hist(as.matrix(data[,"steps"]), main="Histogram: Total number of steps per day", xlab = "Number of steps", col="red")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
 
 ```r
 mean <- mean(as.matrix(data[,"steps"]))
@@ -93,7 +82,7 @@ summary(intervaldata)
 plot(intervaldata, type="l", main="Average number of steps per interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 ```r
 maxdata <- filter(intervaldata, steps==max(steps))
@@ -141,7 +130,7 @@ summary(filledindata2)
 hist(as.matrix(filledindata2[,"steps"]), main="Histogram: Total number of steps per day", xlab = "Number of steps", col="blue")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 ```r
 mean <- mean(as.matrix(filledindata2[,"steps"]))
@@ -179,6 +168,6 @@ weekdata <- summarise(weekdata, steps=mean(steps))
 plot(weekdata, type="l", xlab="Weekday")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 
