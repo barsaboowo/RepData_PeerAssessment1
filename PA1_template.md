@@ -106,6 +106,14 @@ paste("Number of missing values for step count is", missingcount)
 ```
 
 ```r
+paste("Using average for given interval to fill in missing data")
+```
+
+```
+## [1] "Using average for given interval to fill in missing data"
+```
+
+```r
 filledindata <- originaldata
 for(i in unique(originaldata["interval"])){
     filledindata[filledindata["interval"]==i & is.na(filledindata["steps"]),"steps"] <- intervaldata[intervaldata["interval"]==i,"steps"]

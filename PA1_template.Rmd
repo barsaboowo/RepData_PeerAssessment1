@@ -44,6 +44,7 @@ paste("The interval with the max average number of steps is", maxdata["interval"
 ```{r, echo=TRUE}
 missingcount = nrow(filter(originaldata, is.na(steps)))
 paste("Number of missing values for step count is", missingcount)
+paste("Using average for given interval to fill in missing data")
 filledindata <- originaldata
 for(i in unique(originaldata["interval"])){
     filledindata[filledindata["interval"]==i & is.na(filledindata["steps"]),"steps"] <- intervaldata[intervaldata["interval"]==i,"steps"]
